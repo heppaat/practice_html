@@ -32,8 +32,19 @@ const resultContainer = document.getElementById(
 const myFunction = () => {
   const priceInputValue = +priceInput.value;
   const kmInputValue = +kmInput.value;
-  console.log(priceInputValue);
-  console.log(kmInputValue);
+
+  const result = findGoodCars(data, {
+    km: kmInputValue,
+    price: priceInputValue,
+  });
+
+  let content = "";
+  for (let index = 0; index < result.length; index++) {
+    const car = result[index];
+    content += `<p> ${car.brand} </p>`;
+  }
+
+  resultContainer.innerHTML = content;
 };
 
 searchButton.addEventListener("click", myFunction);
